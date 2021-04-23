@@ -31,25 +31,25 @@ kubevirt-operator:
   containers:
     operator:
       image:
-        repository: quay.io/kubevirt/virt-operator
-        tag: &kubevirtVersion v0.38.1
+        repository: docker.io/stratusvm/virt-operator
+        tag: &kubevirtVersion latest
     ## The following four images are placeholder for images in use.
     ## They are not used by the kubevirt-operator chart.
     controller:
       image:
-        repository: quay.io/kubevirt/virt-controller
+        repository: docker.io/stratusvm/virt-controller
         tag: *kubevirtVersion
     handler:
       image:
-        repository: quay.io/kubevirt/virt-handler
+        repository: docker.io/stratusvm/virt-handler
         tag: *kubevirtVersion
     api:
       image:
-        repository: quay.io/kubevirt/virt-api
+        repository: docker.io/stratusvm/virt-api
         tag: *kubevirtVersion
     launcher:
       image:
-        repository: quay.io/kubevirt/virt-launcher
+        repository: docker.io/stratusvm/virt-launcher
         tag: *kubevirtVersion
 
 ## Specify the parameters to override the sub-chart.
@@ -96,23 +96,23 @@ cdi-operator:
   containers:
     operator:
       image:
-        repository: quay.io/kubevirt/cdi-operator
-        tag: &cdiVersion v1.31.0
+        repository: docker.io/stratusvm/cdi-operator
+        tag: &cdiVersion latest
     controller:
       image:
-        repository: quay.io/kubevirt/cdi-controller
+        repository: docker.io/stratusvm/cdi-controller
         tag: *cdiVersion
     importer:
       image:
-        repository: quay.io/kubevirt/cdi-importer
+        repository: docker.io/stratusvm/cdi-importer
         tag: *cdiVersion
     apiserver:
       image:
-        repository: quay.io/kubevirt/cdi-apiserver
+        repository: docker.io/stratusvm/cdi-apiserver
         tag: *cdiVersion
     uploadproxy:
       image:
-        repository: quay.io/kubevirt/cdi-uploadproxy
+        repository: docker.io/stratusvm/cdi-uploadproxy
         tag: *cdiVersion
 
 ## Specify the parameters to override the sub-chart.

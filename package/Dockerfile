@@ -14,12 +14,13 @@ ENV HARVESTER_API_UI_VERSION 1.1.9
 ARG VERSION=dev
 ENV HARVESTER_SERVER_VERSION ${VERSION}
 RUN mkdir -p /usr/share/rancher/harvester && \
-    cd /usr/share/rancher/harvester && \
-    curl -sL https://releases.rancher.com/harvester-ui/${HARVESTER_UI_VERSION}.tar.gz | tar xvzf - --strip-components=2 && \
-    mkdir -p /usr/share/rancher/harvester/api-ui && \
-    cd /usr/share/rancher/harvester/api-ui && \
-    curl -sL https://releases.rancher.com/api-ui/${HARVESTER_API_UI_VERSION}.tar.gz | tar xvzf - --strip-components=1 && \
-    cd /var/lib/rancher/harvester
+    mkdir -p /usr/share/rancher/harvester/api-ui
+
+COPY ${HARVESTER_UI_VERSION}.tar.gz /usr/share/rancher/harvester/
+COPY ${HARVESTER_API_UI_VERSION}.tar.gz /usr/share/rancher/harvester/api-ui
+RUN cd /usr/share/rancher/harvester && tar xvzf ${HARVESTER_UI_VERSION}.tar.gz --strip-components=2
+RUN cd /usr/share/rancher/harvester/api-ui && tar xvzf ${HARVESTER_API_UI_VERSION}.tar.gz --strip-components=1
+RUN cd /var/lib/rancher/harvester
 
 COPY entrypoint.sh harvester /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
