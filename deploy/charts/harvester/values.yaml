@@ -96,23 +96,23 @@ cdi-operator:
   containers:
     operator:
       image:
-        repository: docker.io/stratusvm/cdi-operator
-        tag: &cdiVersion latest
+        repository: quay.io/kubevirt/cdi-operator
+        tag: &cdiVersion v1.31.0
     controller:
       image:
-        repository: docker.io/stratusvm/cdi-controller
+        repository: quay.io/kubevirt/cdi-controller
         tag: *cdiVersion
     importer:
       image:
-        repository: docker.io/stratusvm/cdi-importer
+        repository: quay.io/kubevirt/cdi-importer
         tag: *cdiVersion
     apiserver:
       image:
-        repository: docker.io/stratusvm/cdi-apiserver
+        repository: quay.io/kubevirt/cdi-apiserver
         tag: *cdiVersion
     uploadproxy:
       image:
-        repository: docker.io/stratusvm/cdi-uploadproxy
+        repository: quay.io/kubevirt/cdi-uploadproxy
         tag: *cdiVersion
 
 ## Specify the parameters to override the sub-chart.
